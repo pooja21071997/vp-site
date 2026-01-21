@@ -1,1 +1,87 @@
 /* You can add global styles to this file, and also import other style files */
+.line{
+	    width: 120px;
+    height: 4px;
+    background-color: #ffc107;
+    margin: 10px ;
+}
+.line-red{
+	    width: 120px;
+    height: 4px;
+    background-color: #b70000;
+    margin: 10px ;
+}
+.text-orange{
+	color:#ff6900;
+}
+.hrLine{
+    height:3px; 
+    border:none;
+}
+.bg-founders{
+    background-color: #FEA100;
+}
+.bg-initiatives{
+    background-color: #ffedcd;
+}
+.image-round{
+    border-radius: 30px 110px 30px 110px;
+}
+.imgdiv{
+        border: 2px solid;
+    height: 75vh !important;
+    width: 27vw;
+}
+/* Founder message container */
+.founder-message-container {
+  padding: 40px 20px;
+  overflow: hidden;
+}
+
+/* Sliding text animation */
+.sliding-text {
+  display: inline-block;
+  animation: slideAndBounce 6s ease-in-out infinite;
+  padding: 20px;
+}
+
+@keyframes slideAndBounce {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  45% {
+    transform: translateX(100px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  55% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1;
+}
+.bg-inspiration{
+	background: #fea100;
+}

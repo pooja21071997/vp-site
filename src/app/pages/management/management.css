@@ -1,0 +1,13 @@
+.line {
+    width: 120px;
+    height: 10px;
+    background-color: #ffc107;
+    margin: 10px;
+}
+.table-row:nth-child(even) {
+    background-color: #f7f7f7;
+}
+
+.table-row:nth-child(odd) {
+    background-color: #ffffff;
+}
