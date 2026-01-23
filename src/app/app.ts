@@ -1,20 +1,17 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Navbar } from './components/navbar/navbar';
-import { About } from "./pages/about/about";
 import { Footer } from "./components/shared/footer/footer";
+import { GoToTop } from "./shared/go-to-top/go-to-top";
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar, Footer],
+  imports: [Navbar, RouterOutlet, Footer, GoToTop],
   template: `
-    <div class="app-wrapper">
-      <app-navbar></app-navbar>
-      <main class="main-content">
-        <router-outlet></router-outlet>
-      </main>
-      <app-footer></app-footer>
-    </div>
-  `,
+    <app-navbar></app-navbar>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+    <app-go-to-top></app-go-to-top>
+    `,
   styleUrl: './app.css'
 })
 export class App {
