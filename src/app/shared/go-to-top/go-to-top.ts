@@ -1,40 +1,38 @@
-import { Component, OnInit, OnDestroy, signal } from '@angular/core';
-import { NgIf } from '@angular/common';
-import { fromEvent } from 'rxjs';
-import { throttleTime, takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { Component, HostListener, inject, PLATFORM_ID } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-go-to-top',
-  imports: [NgIf],
-  templateUrl: './go-to-top.html',
-  styleUrl: './go-to-top.css',
+  templateUrl: './go-to-top.html'
 })
-export class GoToTop implements OnInit, OnDestroy {
-  showButton = signal(false);
-  private destroy$ = new Subject<void>();
+export class GoToTopComponent {
+  private platformId = inject(PLATFORM_ID);
 
-  ngOnInit() {
-    fromEvent(window, 'scroll')
-      .pipe(
-        throttleTime(100),
-        takeUntil(this.destroy$)
-      )
-      .subscribe(() => {
-        const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-        this.showButton.set(scrollPosition > 300);
+  constructor(private router: Router) {
+    if (isPlatformBrowser(this.platformId)) {
+      this.router.events.subscribe(event => {
+        if (event instanceof NavigationEnd) {
+          window.scrollTo(0, 0);
+        }
       });
+    }
   }
+  showButton = false;
 
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.showButton = window.scrollY > 300;
+    }
   }
 
   scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    if (isPlatformBrowser(this.platformId)) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
   }
 }
