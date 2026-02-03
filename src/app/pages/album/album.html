@@ -1,0 +1,62 @@
+<div class="container py-5" *ngIf="album">
+
+  <!-- MAIN ALBUM TITLE -->
+  <h2 class="text-danger fw-bold mb-5 text-center">
+    {{ album.name }}
+  </h2>
+
+  <!-- ========================= -->
+  <!-- CASE 1: HAS SUB-ALBUMS -->
+  <!-- ========================= -->
+  <ng-container *ngIf="album.subAlbums?.length; else noSubAlbums">
+
+    <div *ngFor="let sub of album.subAlbums">
+
+      <!-- SUB-ALBUM HEADING -->
+      <h4 class="text-danger fw-bold mb-3 mt-5">
+        {{ sub.name }}
+      </h4>
+
+      <!-- SUB-ALBUM PHOTOS -->
+      <div class="row g-4">
+        <div
+          class="col-lg-4 col-md-6"
+          *ngFor="let photo of sub.photos"
+        >
+          <div class="photo-card shadow-sm">
+            <img
+              [src]="photo"
+              class="img-fluid rounded"
+              alt="Gallery photo"
+            />
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </ng-container>
+
+  <!-- ========================= -->
+  <!-- CASE 2: NO SUB-ALBUMS -->
+  <!-- ========================= -->
+  <ng-template #noSubAlbums>
+
+    <div class="row g-4">
+      <div
+        class="col-lg-4 col-md-6"
+        *ngFor="let photo of album.photos"
+      >
+        <div class="photo-card shadow-sm">
+          <img
+            [src]="photo"
+            class="img-fluid rounded"
+            alt="Gallery photo"
+          />
+        </div>
+      </div>
+    </div>
+
+  </ng-template>
+
+</div>

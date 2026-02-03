@@ -1,1 +1,23 @@
-<p>gallery works!</p>
+<div class="container py-5">
+  <h2 class="text-danger fw-bold mb-4">Gallery</h2>
+
+  <div class="row g-4">
+    <div
+      class="col-lg-3 col-md-4 col-sm-6"
+      *ngFor="let album of albums"
+    >
+      <a
+        [routerLink]="['/gallery', album.slug]"
+        class="album-card text-decoration-none"
+      >
+        <div class="card h-100 shadow-sm">
+          <img [src]="album.cover" class="card-img-top" />
+
+          <div class="card-body text-center">
+            <h6 class="album-title">{{ album.name }}</h6>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

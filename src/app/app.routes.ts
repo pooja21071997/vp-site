@@ -7,6 +7,7 @@ import { Home } from './pages/home/home';
 import { Gallery } from './pages/gallery/gallery';
 import { Contactus } from './pages/contactus/contactus';
 import { FounderMessage } from './pages/founder-message/founder-message';
+import {  AlbumComponent } from './pages/album/album';
 
 export const routes: Routes = [
      { path: '', component: Home },
@@ -23,6 +24,7 @@ export const routes: Routes = [
   { path: 'institutes', component: Institutes },
   { path: 'initiatives', component: Initiatives },
   { path: 'gallery', component: Gallery },
+  { path: 'gallery/:slug', component: AlbumComponent },
   { path: 'contact', component: Contactus },
   { path: '**', redirectTo: '' } // fallback route
 ];
