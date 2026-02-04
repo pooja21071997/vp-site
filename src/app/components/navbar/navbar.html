@@ -20,35 +20,19 @@
     </button>
 
     <!-- Menu -->
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+    <div
+      class="collapse navbar-collapse justify-content-end"
+      id="navbarNavAltMarkup"
+    >
       <div class="navbar-nav">
         <a
+          *ngFor="let item of navItems"
           class="nav-link"
-          routerLink="/"
+          [routerLink]="item.path"
           routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
+          [routerLinkActiveOptions]="{ exact: item.exact ?? false }"
         >
-          Home
-        </a>
-
-        <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
-        <a class="nav-link" routerLink="/founder-message" routerLinkActive="active">
-          Founder's Message
-        </a>
-        <a class="nav-link" routerLink="/management" routerLinkActive="active">
-          Management
-        </a>
-        <a class="nav-link" routerLink="/institutes" routerLinkActive="active">
-          Institutes
-        </a>
-        <a class="nav-link" routerLink="/initiatives" routerLinkActive="active">
-          Initiatives
-        </a>
-        <a class="nav-link" routerLink="/gallery" routerLinkActive="active">
-          Gallery
-        </a>
-        <a class="nav-link" routerLink="/contact" routerLinkActive="active">
-          Contact Us
+          {{ item.label }}
         </a>
       </div>
     </div>
